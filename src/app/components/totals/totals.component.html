@@ -1,0 +1,11 @@
+<div class="totals">
+  <span class="title">TOTALS</span>
+  <div class="donut-chart" [ngStyle]="{'animation-delay': getPercent()}">
+    <div class="info">
+      <span>{{ totals.totalSold }}</span>
+      <span>units<br /> sold</span>
+    </div>
+  </div>
+  <p class="totalRevenue mt-4">{{ formatCurrency(totals.totalRevenue) }}</p>
+  <button class="btn mb-4" (click)="onClick()">{{ settled ? 'Settled!':'Settle' }}</button>
+</div>

@@ -1,0 +1,231 @@
+.item{
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+
+  .product{
+    display: flex;
+    flex-flow: column;
+    width: 35%;
+
+    .title{
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .image{
+      position: relative;
+      display: flex;
+      width: 60%;
+      height: 150px;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #999;
+      background-color: #dedede;
+      border-radius: 8px;
+      margin: 10px;
+      margin-left: 0;
+
+      img{
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .hasNotes{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: -10px;
+        right: -10px;
+        font-weight: bold;
+        color:  #dc3545;
+        border: 2px solid #dc3545;
+        background-color: #ffa7b0;
+        text-align: center;
+        border-radius: 25px;
+        z-index: 10;
+      }
+
+      .notes{
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: fit-content;
+        height: fit-content;
+        font-family: "louis-geoge-cafe", "Open Sans", sans-serif;
+        padding: 10px;
+        background-color: #888;
+        box-shadow: 5px 0px 5px -1px #d8d3cf;
+        color: #fff;
+        border-radius: 8px;
+        max-width: 350px;
+      }
+    }
+
+    .pricing{
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+  }
+
+
+  .sales{
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    .details{
+      display: flex;
+      flex-flow: row;
+      width: 100%;
+
+      > div{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        width: 100%;
+
+        + div {
+          margin-left: -2px;
+        }
+
+        > span{
+          font-weight: bold;
+          display: flex;
+          align-items: flex-end;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .input{
+          border: solid 1px #888;
+          padding: 15px 0;
+          background: #fff;
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+
+          input, span{
+            border: none;
+            padding: 0 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #888;
+            width: 100%;
+
+            &:disabled{
+              background-color: #fff;
+            }
+
+            &:focus{
+              border-color: inherit;
+              -webkit-box-shadow: none;
+              box-shadow: none;
+              outline: none;
+            }
+          }
+
+          span{
+            height: 100%;
+          }
+
+          &.no-border{
+            border: none;
+          }
+
+          &.red{
+            input, span{
+              color: #ff634a;
+            }
+          }
+
+          &.green{
+            input, span{
+              color: #35e1af;
+            }
+          }
+
+          &.blue{
+            input, span{
+              color: #63c8f9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn{
+  border: solid 1px #888;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  color: #888;
+  font-weight: bold;
+  width: 100%;
+
+  &:hover{
+    background-color: #e8e8e8;
+    color: #555;
+  }
+
+  &:focus{
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.popover{
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  top: 100%;
+  font-family: "louis-geoge-cafe", "Open Sans", sans-serif;
+  margin-top: 10px;
+  background-color: #888;
+  box-shadow: 5px 0px 5px -1px #d8d3cf;
+  padding: 8px;
+
+  &.hide{
+    display: none;
+  }
+
+  &:before{
+    content: "";
+    position: absolute;
+    top: -8px;
+    border: 8px solid;
+    border-color: #888 #888 transparent transparent;
+    transform: rotate(-45deg);
+    box-shadow: 5px 0px 5px -1px #d8d3cf;
+  }
+
+  span{
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.donut-chart{
+  width: 50px;
+  height: 50px;
+  top: -10px;
+
+  span{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+}

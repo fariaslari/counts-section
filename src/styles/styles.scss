@@ -1,0 +1,75 @@
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@import 'fonts.scss';
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll !important;
+}
+
+app-root {
+  font-family: "louis-geoge-cafe", "Open Sans", sans-serif;
+  color: #888888;
+  font-size: 14px;
+}
+
+.donut-chart {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  position: relative;
+  background: #ededed linear-gradient(to right, #ededed 50%, #63c8f9 50%);
+  color: #63c8f9;
+  border-radius: 50%;
+
+  @keyframes spin {
+    to {
+      transform: rotate(180deg);
+    }
+  }
+
+  @keyframes background {
+    50% {
+      background-color: currentColor;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background: #fff;
+    border-radius: 50%;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: inherit;
+    height: 100%;
+    width: 50%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0 100% 100% 0 / 50%;
+    transform: rotate(0);
+    transform-origin: 0 50%;
+    animation: 50.01s spin infinite linear,
+               100.01s background infinite step-end;
+    animation-play-state: paused;
+    animation-delay: inherit;
+  }
+
+  span{
+    z-index: 1;
+  }
+}
