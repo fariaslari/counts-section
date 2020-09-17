@@ -6,6 +6,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ApolloModule } from 'apollo-angular';
+import { HttpLinkModule } from 'apollo-angular-link-http';
 
 import localePtBr from '@angular/common/locales/pt';
 import 'rxjs/add/operator/publishReplay';
@@ -16,6 +18,7 @@ import { ProductGridComponent } from './components/product-grid/product-grid.com
 import { ItemComponent } from './components/item/item.component';
 import { TotalsComponent } from './components/totals/totals.component';
 import { ItemService } from './services/item.service';
+import { GraphqlService } from './graphql/graphql.service';
 
 registerLocaleData(localePtBr, 'pt');
 
@@ -32,6 +35,8 @@ registerLocaleData(localePtBr, 'pt');
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ApolloModule,
+    HttpLinkModule,
     NgbModule,
     RouterModule.forRoot([
       { path: '**', component: WizardComponent }
@@ -39,6 +44,7 @@ registerLocaleData(localePtBr, 'pt');
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
+    GraphqlService,
     DecimalPipe,
     ItemService
   ],

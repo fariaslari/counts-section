@@ -1,6 +1,6 @@
 export interface Item {
   name: string;
-  image: string;
+  imagePath: string;
   price: number;
   initialQty: number;
   notes: string;

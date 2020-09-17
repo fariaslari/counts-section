@@ -1,25 +1,36 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 
 import { Item } from '../models/item';
 
-import { environment } from '../../environments/environment';
+import { GraphqlService } from '../graphql/graphql.service';
+import gql from 'graphql-tag';
+import { ItemType } from '../graphql/types/item.type';
 
 @Injectable()
 export class ItemService {
 
-  private data: Observable<Item[]>;
-
   constructor(
-    private http: HttpClient
-  ) {
-    const url = `/data/items.json-data`;
-    this.data = this.http.get<Item[]>(url).publishReplay(1).refCount();
-  }
+    private service: GraphqlService
+  ) {}
 
   getItems(): Observable<Item[]> {
-    return this.data;
+    const query = gql`query getItems{
+      items {
+          id,
+          name,
+          imagePath,
+          price,
+          initialQty
+        }
+  }`;
+
+    return new Observable<Item[]>(observer => {
+      this.service.runQuery(query).subscribe((result: {data: any}) => {
+        let items = result.data.items as ItemType[];
+        observer.next(items as Item[])
+      });
+    });
   }
 }

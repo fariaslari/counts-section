@@ -12,6 +12,7 @@ export class ItemComponent implements OnInit {
 
   gross: any;
   qtyAvail: any;
+  imagePath: string;
   totalSold: number;
   totalIn: number;
   showPopover: boolean;
@@ -26,20 +27,27 @@ export class ItemComponent implements OnInit {
     this.count = {
       add: 0,
       comp: 0,
-      countIn: this.item.initialQty,
+      countIn: 0,
       countOut: 0
     };
     this.totalIn = 0;
     this.totalSold = 0;
     this.gross = 0;
-    this.qtyAvail = 0;
+    this.imagePath = this.item.imagePath;
+    this.qtyAvail = this.item.initialQty;
     this.showPopover = false;
+
+    console.log(this.item)
   }
 
   updateTotals() {
-    this.totalIn = parseInt(this.count.countIn.toString(), 10) + parseInt(this.count.add.toString(), 10);
-    this.totalSold = this.totalIn - this.count.countOut - this.count.comp;
-    this.qtyAvail = -this.totalSold;
+    const countIn = +this.count.countIn || 0;
+    const countOut = +this.count.countOut || 0;
+    const add = +this.count.countOut || 0;
+
+    this.totalIn = countIn + add;
+    this.totalSold = this.totalIn - countOut - this.count.comp;
+    this.qtyAvail = this.item.initialQty - countIn + countOut;
     this.gross = this.totalSold * this.item.price;
     this.updateItemTotals.emit({
       totalItems: this.totalIn,
@@ -59,10 +67,6 @@ export class ItemComponent implements OnInit {
   formatCurrency(value: any): string {
     value = Math.round(value * 100) / 100;
     return '$ ' + parseFloat(value).toFixed(2);
-  }
-
-  getImagePath(): string{
-    return `/assets/img/${this.item.image}`;
   }
 
   getPercent(): string {

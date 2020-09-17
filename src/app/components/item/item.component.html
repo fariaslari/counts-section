@@ -5,7 +5,7 @@
       <div class="image">
         <div *ngIf="item.notes" class="hasNotes" (mouseover)="toggleNotes($event)" (mouseout)="toggleNotes($event)">!</div>
         <div *ngIf="showNotes" class="notes"><span>{{item.notes}}</span></div>
-        <img [src]="getImagePath()" />
+        <img [src]="imagePath" />
       </div>
       <span class="pricing">{{formatCurrency(item.price)}}</span>
     </div>

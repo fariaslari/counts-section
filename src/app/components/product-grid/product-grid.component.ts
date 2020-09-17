@@ -20,7 +20,9 @@ export class ProductGridComponent implements OnInit {
     this.totals = [];
     this.itemService.getItems().subscribe(items => {
       this.items = items;
+      console.log(this.items)
     });
+    console.log(this.items)
   }
 
   updateItemTotals(index: number, itemTotals: Totals) {
