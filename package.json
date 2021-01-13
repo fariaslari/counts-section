@@ -39,7 +39,7 @@
     "inputmask": "^3.3.11",
     "inquirer": "^6.0.0",
     "jquery": "^3.3.1",
-    "jquery-validation": "^1.17.0",
+    "jquery-validation": "^1.19.3",
     "node-sass": "^4.14.1",
     "popper.js": "^1.14.3",
     "rxjs": "^5.5.6",
